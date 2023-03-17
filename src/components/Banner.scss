@@ -1,0 +1,11 @@
+.banner {
+  left: calc(34vw);
+  position: fixed;
+  z-index: 1;
+  background-color: coral;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  gap: 1rem;
+  padding: 0.25rem;
+}
