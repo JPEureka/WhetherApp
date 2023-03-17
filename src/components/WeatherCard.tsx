@@ -14,12 +14,12 @@ import { FToC, getWindDirection } from "./utils";
 import "./WeatherCard.scss";
 import WeatherIcon from "./WeatherIcon";
 import { WeatherCardProp } from "./types";
+const countryCodeMapper = require("country-code-mapper");
 
 const WeatherCard = (props?: WeatherCardProp) => {
   if (!props) return <></>;
   const { name, sys, weather, main, wind } = props;
   const weatherInfo = weather && weather[0];
-  console.log(props);
   return (
     <div className="weather-card">
       <div className="weather-card-inner">
@@ -27,7 +27,7 @@ const WeatherCard = (props?: WeatherCardProp) => {
           <div className="location-info">
             <div className="icon-entry">
               <FontAwesomeIcon icon={faGlobe} />
-              <label>{sys?.country}</label>
+              <label>{countryCodeMapper.getCountryName(sys?.country)}</label>
             </div>
             <div className="icon-entry">
               <FontAwesomeIcon icon={faMapLocation} />
