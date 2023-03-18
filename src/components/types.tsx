@@ -40,3 +40,10 @@ export type BannerProps = {
   message: string;
   onClose: () => void;
 };
+
+export const ERROR_CODE_MAP: {
+  [key: string]: string;
+} = {
+  400: "INVALID_LAT_LON",
+  401: "INVALID_AUTH",
+};

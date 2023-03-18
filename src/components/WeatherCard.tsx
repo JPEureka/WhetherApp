@@ -25,11 +25,11 @@ const WeatherCard = (props?: WeatherCardProp) => {
     : `Latitude: ${coord?.lat} , Longitude: ${coord?.lon}`;
   return (
     <div className="weather-card">
-      <div className="weather-card-inner">
-        <div className="weather-card-front">
-          <div className="location-info">
+      <div className="weather-card-inner" data-testid="weatherCardInner">
+        <div className="weather-card-front" data-testid="weatherCardFront">
+          <div className="location-info" data-testid="locatoinInfo">
             {sys?.country && (
-              <div className="icon-entry">
+              <div className="icon-entry" data-testid="countryFlag">
                 <img
                   src={countryCodeMapper.getCountryFlag(sys?.country)}
                   alt={countryCodeMapper.getCountryName(sys?.country)}
@@ -39,37 +39,37 @@ const WeatherCard = (props?: WeatherCardProp) => {
               </div>
             )}
 
-            <div className="icon-entry">
+            <div className="icon-entry" data-testid="location">
               <FontAwesomeIcon icon={name ? faMapLocationDot : faLocationDot} />
               <label>{location}</label>
             </div>
           </div>
           <WeatherIcon {...weatherInfo} />
-          <div className="weather-info">
-            <div className="icon-entry">
+          <div className="weather-info" data-testid="weatherInfo">
+            <div className="icon-entry" data-testid="tempture">
               <FontAwesomeIcon icon={faTemperatureQuarter} />
               <label>{`Temp: ${FToC(main?.temp)} °C`}</label>
             </div>
-            <div className="icon-entry">
+            <div className="icon-entry" data-testid="feelsLike">
               <FontAwesomeIcon icon={faTemperature2} />
               <label>{`Feels Like: ${FToC(main?.feels_like)} °C`}</label>
             </div>
           </div>
         </div>
-        <div className="weather-card-back">
-          <div className="icon-entry">
+        <div className="weather-card-back" data-testid="weatherCardBack">
+          <div className="icon-entry" data-testid="wind">
             <FontAwesomeIcon icon={faWind} />
             <label>{`${wind?.speed} ${getWindDirection(wind?.deg)}`}</label>
           </div>
-          <div className="icon-entry">
+          <div className="icon-entry" data-testid="highestTempture">
             <FontAwesomeIcon icon={faTemperatureHigh} />
             <label>{`Highest tempture: ${FToC(main?.temp_max)}`}</label>
           </div>
-          <div className="icon-entry">
+          <div className="icon-entry" data-testid="lowestTempture">
             <FontAwesomeIcon icon={faTemperatureLow} />
             <label>{`Lowest tempture: ${FToC(main?.temp_min)}`}</label>
           </div>
-          <div className="icon-entry">
+          <div className="icon-entry" data-testid="humidity">
             <FontAwesomeIcon icon={faDroplet} />
             <label>{`Humidity: ${main?.humidity}`}</label>
           </div>

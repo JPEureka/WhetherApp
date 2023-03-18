@@ -17,3 +17,24 @@ export const getWindDirection = (degree?: number): string => {
   }
   return "N";
 };
+
+export const getWeatherIcon = async (name?: string): Promise<string> => {
+  if (name)
+    return await import(`../icons/${name}.png`).then((res) => res.default);
+  return "";
+};
+
+export const getErrorMessage = ({
+  code,
+  message = "",
+}: {
+  code: string;
+  message?: string;
+}): string => {
+  const messages: {
+    [key: string]: string;
+  } = {
+    INVALID_LAT_LON: "Please input valid latitude and longitude value",
+  };
+  return message || messages[code] || "OOPS~ Something went wrong!";
+};

@@ -1,20 +1,13 @@
 import React from "react";
 import WeatherCard from "./WeatherCard";
 import Banner from "./Banner";
-import { getErrorMessage } from "./messages";
-import { WeatherInfo } from "./types";
+import { getErrorMessage } from "./utils";
+import { WeatherInfo, ERROR_CODE_MAP } from "./types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
-import "./InputPanel.scss";
+import "./MainPanel.scss";
 
-const ERROR_CODE_MAP: {
-  [key: string]: string;
-} = {
-  400: "INVALID_LAT_LON",
-  401: "INVALID_AUTH",
-};
-
-const InputPanel = () => {
+const MainPanel = () => {
   const [weatherInfo, setWeatherInfo] = React.useState<Array<WeatherInfo>>([]);
   const [apiKey, setApiKey] = React.useState("");
   const [loading, setLoading] = React.useState(false);
@@ -73,10 +66,12 @@ const InputPanel = () => {
   };
 
   return (
-    <div className="input-panel">
+    <div className="main-panel"data-testid="mainPanel">
       {showBanner && <Banner message={bannerMessage} onClose={onBannerClose} />}
-      <div className="input-entry">
-        <label>Please input your OpenWeather API key for query: </label>
+      <div className="input-entry" data-testid="apiKeyInput">
+        <label htmlFor="apiKeyInput">
+          Please input your OpenWeather API key for query:{" "}
+        </label>
         <input
           type="text"
           id="apiKeyInput"
@@ -88,15 +83,20 @@ const InputPanel = () => {
       </div>
 
       <div className="lat-lon-query">
-        <div className="input-entry">
-          <label>Latitude: </label>
+        <div className="input-entry" data-testid="latInput">
+          <label htmlFor="latInput">Latitude: </label>
           <input type="number" id="latInput" placeholder="Enter latitude" />
         </div>
-        <div className="input-entry">
-          <label>Longitude: </label>
+        <div className="input-entry" data-testid="lonInput">
+          <label htmlFor="lonInput">Longitude: </label>
           <input type="text" id="lonInput" placeholder="Enter longitude" />
         </div>
-        <button disabled={!apiKey} onClick={fetchData}>
+        <button
+          disabled={!apiKey}
+          onClick={fetchData}
+          title="Query"
+          aria-label="Query"
+        >
           Query
         </button>
         {loading && <FontAwesomeIcon className="loading" icon={faSpinner} />}{" "}
@@ -112,4 +112,4 @@ const InputPanel = () => {
   );
 };
 
-export default InputPanel;
+export default MainPanel;

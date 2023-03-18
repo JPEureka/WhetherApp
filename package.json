@@ -40,5 +40,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "jest-axe": "^7.0.0",
+    "jest-dom": "^4.0.0",
+    "react-testing-library": "^8.0.1"
   }
 }

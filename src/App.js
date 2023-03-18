@@ -1,10 +1,10 @@
 import "./App.css";
-import InputPanel from "./components/InputPanel";
+import MainPanel from "./components/MainPanel";
 
 function App() {
   return (
     <div className="App">
-      <InputPanel />
+      <MainPanel />
     </div>
   );
 }
