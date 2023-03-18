@@ -1,5 +1,7 @@
 .banner {
-  left: calc(34vw);
+  left: calc(30vw);
+  min-width: 40rem;
+  top: 0;
   position: fixed;
   z-index: 1;
   background-color: coral;

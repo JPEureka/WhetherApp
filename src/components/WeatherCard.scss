@@ -4,11 +4,11 @@
   margin-top: 1rem;
   margin-left: auto;
   margin-right: auto;
-  padding: 1rem;
+  padding: 1rem 1rem 2.5rem 1rem;
   border: solid rgb(9, 66, 4);
   border-width: 1rem;
   border-radius: 0.5rem;
-  width: 50%;
+  min-width: 18rem;
   height: 10vw;
   justify-content: center;
   display: flex;
@@ -30,6 +30,11 @@
       width: 100%;
       display: inline-flex;
       justify-content: space-evenly;
+    }
+    .location-info {
+      .countryFlag {
+        height: 100%;
+      }
     }
   }
 

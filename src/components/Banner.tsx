@@ -1,20 +1,11 @@
 import React from "react";
 import "./Banner.scss";
-type props = {
-  onClose: () => void;
-};
+import { BannerProps } from "./types";
 
-const Banner = ({ onClose }: props) => {
+const Banner = ({ message, onClose }: BannerProps) => {
   return (
     <div className="banner">
-      Please input valid latitude and longitude!
-      <span>
-        You can visit this{" "}
-        <a href="https://www.latlong.net/" target="_blank">
-          website
-        </a>{" "}
-        to check target latitude and longitude.
-      </span>
+      <span>{message}</span>
       <button onClick={onClose}>X</button>
     </div>
   );

@@ -3,8 +3,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faWind,
   faDroplet,
-  faGlobe,
-  faMapLocation,
+  faMapLocationDot,
+  faLocationDot,
   faTemperatureQuarter,
   faTemperature2,
   faTemperatureLow,
@@ -18,20 +18,30 @@ const countryCodeMapper = require("country-code-mapper");
 
 const WeatherCard = (props?: WeatherCardProp) => {
   if (!props) return <></>;
-  const { name, sys, weather, main, wind } = props;
+  const { name, sys, weather, main, wind, coord } = props;
   const weatherInfo = weather && weather[0];
+  const location = name
+    ? name
+    : `Latitude: ${coord?.lat} , Longitude: ${coord?.lon}`;
   return (
     <div className="weather-card">
       <div className="weather-card-inner">
         <div className="weather-card-front">
           <div className="location-info">
+            {sys?.country && (
+              <div className="icon-entry">
+                <img
+                  src={countryCodeMapper.getCountryFlag(sys?.country)}
+                  alt={countryCodeMapper.getCountryName(sys?.country)}
+                  title={countryCodeMapper.getCountryName(sys?.country)}
+                  className="countryFlag"
+                />
+              </div>
+            )}
+
             <div className="icon-entry">
-              <FontAwesomeIcon icon={faGlobe} />
-              <label>{countryCodeMapper.getCountryName(sys?.country)}</label>
-            </div>
-            <div className="icon-entry">
-              <FontAwesomeIcon icon={faMapLocation} />
-              <label>{name}</label>
+              <FontAwesomeIcon icon={name ? faMapLocationDot : faLocationDot} />
+              <label>{location}</label>
             </div>
           </div>
           <WeatherIcon {...weatherInfo} />

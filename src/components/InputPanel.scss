@@ -1,12 +1,30 @@
 .input-panel {
-  max-width: 40rem;
-  margin: auto;
+  margin: 5rem;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   gap: 1rem;
   button {
     margin: auto;
+  }
+  .lat-lon-query {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 0.25rem;
+  }
+
+  .input-entry {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+  }
+
+  .weather-cards {
+    display: flex;
+    gap: 0.5rem;
+    width: 100%;
+    flex-wrap: wrap;
   }
 
   .loading {
